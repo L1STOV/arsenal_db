@@ -10,13 +10,24 @@ connection = psycopg2.connect(
 
 cur = connection.cursor()
 
-cur.execute(
-    "INSERT INTO transfers(date, player_first_name, player_second_name, transfer_type, from_club, to_club, price) "
-    "VALUES ('2020-07-01', 'Cedric', 'Soares', 'Free transfer', 'Southampton', 'Arsenal', 'free');"
-)
+try:
+    # cur.execute("SELECT * FROM transfers WHERE to_club = 'Arsenal';")
+    # cur.execute("SELECT * FROM transfers WHERE transfer_type = 'Free transfer';")
+    # cur.execute("SELECT * FROM transfers WHERE transfer_type = 'Sell';")
+    cur.execute("SELECT * FROM transfers WHERE from_club = 'Arsenal' ORDER BY to_club, date;")
 
-connection.commit()
+    rows = cur.fetchall()
 
-print("-- Data insert --")
+    for row in rows:
+        print("\nTransfer date -", row[1])
+        print("Players name -", row[2], row[3])
+        print("Transfer type -", row[4])
+        print("From -", row[5])
+        print("To -", row[6])
+        print("Price -", row[7])
 
-connection.close()
+except Exception as error:
+    print("\n---Query is failed -", error, '---\n')
+finally:
+    connection.close()
+    print("\n---Connection to database is closed---\n")
