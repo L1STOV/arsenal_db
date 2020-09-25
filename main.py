@@ -1,6 +1,5 @@
 from db_config import connection
-
-cur = connection.cursor()
+from transfers_table import cur
 
 try:
     #  cur.execute("SELECT * FROM transfers WHERE to_club = 'Arsenal';")
