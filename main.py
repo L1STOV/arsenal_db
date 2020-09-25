@@ -1,5 +1,5 @@
 from db_config import connection
-from transfers_table import cur
+from db_config import cur
 
 try:
     #  cur.execute("SELECT * FROM transfers WHERE to_club = 'Arsenal';")

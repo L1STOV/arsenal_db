@@ -1,6 +1,4 @@
-from db_config import connection
-
-cur = connection.cursor()
+from db_config import cur
 
 cur.execute('''CREATE TABLE transfers(
 id BIGSERIAL PRIMARY KEY,
