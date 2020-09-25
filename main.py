@@ -2,6 +2,11 @@ from db_config import connection
 from db_config import cur
 
 try:
+
+    # cur.execute("UPDATE transfers SET transfer_type = 'Buy' WHERE player_first_name = 'Willian';")
+
+    # cur.execute("DELETE FROM transfers WHERE id = '1';")
+
     cur.execute("SELECT * FROM transfers WHERE from_club = 'Arsenal' ORDER BY to_club, date;")
 
     rows = cur.fetchall()
