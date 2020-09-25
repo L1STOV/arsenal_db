@@ -8,3 +8,5 @@ connection = psycopg2.connect(
     port="5432"
 )
 
+cur = connection.cursor()
+

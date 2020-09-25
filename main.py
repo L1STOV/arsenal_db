@@ -2,9 +2,6 @@ from db_config import connection
 from db_config import cur
 
 try:
-    #  cur.execute("SELECT * FROM transfers WHERE to_club = 'Arsenal';")
-    #  cur.execute("SELECT * FROM transfers WHERE transfer_type = 'Free transfer';")
-    #  cur.execute("SELECT * FROM transfers WHERE transfer_type = 'Sell';")
     cur.execute("SELECT * FROM transfers WHERE from_club = 'Arsenal' ORDER BY to_club, date;")
 
     rows = cur.fetchall()
