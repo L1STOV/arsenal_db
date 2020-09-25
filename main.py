@@ -1,19 +1,11 @@
-import psycopg2
-
-connection = psycopg2.connect(
-    database="arsenal",
-    user="postgres",
-    password="",
-    host="127.0.0.1",
-    port="5432"
-)
+from db_config import connection
 
 cur = connection.cursor()
 
 try:
-    # cur.execute("SELECT * FROM transfers WHERE to_club = 'Arsenal';")
-    # cur.execute("SELECT * FROM transfers WHERE transfer_type = 'Free transfer';")
-    # cur.execute("SELECT * FROM transfers WHERE transfer_type = 'Sell';")
+    #  cur.execute("SELECT * FROM transfers WHERE to_club = 'Arsenal';")
+    #  cur.execute("SELECT * FROM transfers WHERE transfer_type = 'Free transfer';")
+    #  cur.execute("SELECT * FROM transfers WHERE transfer_type = 'Sell';")
     cur.execute("SELECT * FROM transfers WHERE from_club = 'Arsenal' ORDER BY to_club, date;")
 
     rows = cur.fetchall()
